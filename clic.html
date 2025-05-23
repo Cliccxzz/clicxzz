@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clic</title>
+  <link rel="shortcut icon" href="Design sem nome (44).png" type="image/x-icon">
+  <style>
+    
+    body {
+      background-color: #6C2EB9;
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+       font-family: 'Neovibes', sans-serif;
+      padding-top: 80px; /* espaço para o header */
+        overflow: hidden !important;
+        text-decoration: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      
+      font-size: 18px;
+    }
+
+    .cssbuttons-io-button {
+      background: #a370f0;
+      color: white;
+      font-family: inherit;
+      padding: 0.35em;
+      padding-left: 1.2em;
+      font-size: 17px;
+      font-weight: 500;
+      border-radius: 0.9em;
+      border: none;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      box-shadow: inset 0 0 1.6em -0.6em #714da6;
+      overflow: hidden;
+      position: relative;
+      height: 2.8em;
+      padding-right: 3.3em;
+      cursor: pointer;
+    }
+
+    .cssbuttons-io-button .icon {
+      background: white;
+      margin-left: 1em;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.2em;
+      width: 2.2em;
+      border-radius: 0.7em;
+      box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+      right: 0.3em;
+      transition: all 0.3s;
+    }
+
+    .cssbuttons-io-button:hover .icon {
+      width: calc(100% - 0.6em);
+    }
+
+    .cssbuttons-io-button .icon svg {
+      width: 1.1em;
+      transition: transform 0.3s;
+      color: #7b52b9;
+    }
+
+    .cssbuttons-io-button:hover .icon svg {
+      transform: translateX(0.1em);
+    }
+
+    .cssbuttons-io-button:active .icon {
+      transform: scale(0.95);
+    }
+
+    @font-face {
+      font-family: 'Neovibes';
+      src: url('NCLNeovibes-Demo.otf') format('opentype');
+    }
+    @font-face {
+  font-family: 'Fighting Spirit 2';
+  src: url('Fighting\ Spirit\ 2.otf') format('opentype');
+}
+
+    header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* coloca um abaixo do outro */
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+ 
+  font-size: 18px;
+  text-align: center;
+}
+
+    
+  </style>
+</head>
+<body>
+
+  <header >
+    <span>Promoção acaba em:</span>
+    <span id="cronometro">36:00:00</span>
+  </header>
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; margin-bottom: 100px;">
+    <div style="display: flex; flex-direction: row; align-items: center; padding: 40px; gap: 20px; ">
+      <div>
+        <img id="promo-img" style="width: 170px; border-radius: 20px;" src="494355533_719472143871528_5570513098393312961_n.jpg" alt="">
+      </div>
+      <div>
+        <p style="background-color: white; padding: 20px; border-radius: 20px;">
+          Promoção por tempo limitado, faça seu pedido agora mesmo!
+        </p>
+      </div>
+    </div>
+    <div >
+      <a style="text-decoration: none;" href="https://www.contate.me/cliiccxzz">
+        <button  class="cssbuttons-io-button">
+          Enviar mensagem
+          <div class="icon">
+            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+            </svg>
+          </div>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+  // Troca automática das imagens
+  const imgElement = document.getElementById('promo-img');
+  const images = [
+    '494355533_719472143871528_5570513098393312961_n.jpg',
+    '494359512_1353976749008769_2499212685122161905_n.jpg'
+  ];
+  let currentIndex = 0;
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    imgElement.src = images[currentIndex];
+  }, 1000);
+
+  // Cronômetro regressivo até às 23:00 de amanhã
+  const cronometro = document.getElementById('cronometro');
+
+  // Define a data de término (amanhã às 23:00)
+  const agora = new Date();
+  const dataFim = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate() + 1, 23, 0, 0); 
+
+  function atualizarCronometro() {
+    const agora = new Date();
+    const diferenca = dataFim - agora;
+
+    if (diferenca > 0) {
+      const horas = Math.floor(diferenca / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+      cronometro.textContent = 
+        String(horas).padStart(2, '0') + ':' + 
+        String(minutos).padStart(2, '0') + ':' + 
+        String(segundos).padStart(2, '0');
+    } else {
+      cronometro.textContent = "00:00:00";
+    }
+  }
+
+  setInterval(atualizarCronometro, 1000);
+  atualizarCronometro(); // chama uma vez imediatamente
+</script>
+
+</body>
+</html>
